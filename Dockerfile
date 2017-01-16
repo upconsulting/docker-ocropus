@@ -17,4 +17,4 @@ RUN wget -nd http://www.tmbdev.net/en-default.pyrnn.gz && mv en-default.pyrnn.gz
 RUN python setup.py install
 
 VOLUME /data
-#RUN $command
+RUN $command
