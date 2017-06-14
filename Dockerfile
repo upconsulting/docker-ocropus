@@ -7,7 +7,7 @@ ARG user_uid=1001
 ARG user_group=docker
 ARG user_name=tomcat
 
-RUN useradd -r -u $user_uid -g $user_group $user_name
+RUN useradd -r -u $user_uid -G $user_group $user_name
 
 # run installs in noninteractive mode
 ENV DEBIAN_FRONTEND noninteractive
