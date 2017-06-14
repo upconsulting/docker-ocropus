@@ -8,7 +8,6 @@ ARG user_group=docker
 ARG user_name=tomcat
 
 RUN useradd -r -u $user_uid -G $user_group $user_name
-USER $user_name
 
 # run installs in noninteractive mode
 ENV DEBIAN_FRONTEND noninteractive
@@ -21,5 +20,6 @@ RUN apt-get install -y wget && apt-get install -y $(cat PACKAGES)
 RUN wget -nd http://www.tmbdev.net/en-default.pyrnn.gz && mv en-default.pyrnn.gz models/
 RUN python setup.py install
 
+USER $user_name
 VOLUME /data
 RUN $command
