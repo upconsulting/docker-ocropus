@@ -2,12 +2,12 @@ FROM ubuntu:16.04
 
 MAINTAINER Julia Damerow https://github.com/jdamerow
 
-ARG command=./run-test
-ARG user_uid=1001
-ARG user_group=docker
-ARG user_name=tomcat
+ARG command=whoami
+ARG user_uid=
+ARG user_group=
+ARG user_name=
 
-RUN useradd -r -u $user_uid -G $user_group $user_name
+RUN if [ "$user_uid" != "" ] ; then useradd -r -u $user_uid -G $user_group $user_name ; else user_name="$(whoami)" ; fi
 
 # run installs in noninteractive mode
 ENV DEBIAN_FRONTEND noninteractive
